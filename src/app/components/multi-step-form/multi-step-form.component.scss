@@ -1,0 +1,78 @@
+@import "../../../styles/colors";
+
+:host {
+  display: flex;
+  width: 60rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: $white;
+}
+
+.steps {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-image: url("../../../assets/images/bg-sidebar-desktop.svg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+  counter-reset: step;
+}
+
+.step {
+  display: flex;
+  gap: 1rem;
+  &::before {
+    content: counter(step);
+    counter-increment: step;
+    height: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    border: 1px solid $white;
+    color: $white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.active::before {
+    color: $marine-blue;
+    background-color: $light-blue;
+  }
+
+  .step-info {
+    display: flex;
+    flex-direction: column;
+    text-transform: uppercase;
+  }
+
+  .step-info::before {
+    content: "Step " counter(step);
+    color: $light-gray;
+  }
+}
+
+form {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem 3rem;
+
+  .form-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+
+    .form-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}
