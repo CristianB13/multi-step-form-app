@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./multi-step-form.component.scss']
 })
 export class MultiStepFormComponent {
+  step: number = 1;
 
+  nextStep(): void {
+    this.step++;
+  }
+
+  previousStep(): void {
+    this.step--;
+  }
 }

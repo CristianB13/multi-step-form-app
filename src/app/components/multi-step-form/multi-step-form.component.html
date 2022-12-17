@@ -1,1 +1,52 @@
-<p>multi-step-form works!</p>
+<div class="steps">
+  <div class="step" [class.active]="step === 1">
+    <div class="step-info">Alfa</div>
+  </div>
+  <div class="step" [class.active]="step === 2">
+    <div class="step-info">Alfa</div>
+  </div>
+  <div class="step" [class.active]="step === 3">
+    <div class="step-info">Alfa</div>
+  </div>
+  <div class="step" [class.active]="step === 4">
+    <div class="step-info">Alfa</div>
+  </div>
+</div>
+<form>
+  <div *ngIf="step === 1" class="form-step">
+    <div class="form-group">
+      Form Group 1
+    </div>
+    <div class="form-nav">
+        <button type="button" (click)="previousStep()">Back</button>
+        <button type="button" (click)="nextStep()">Next Step</button>
+    </div>
+  </div>
+  <div *ngIf="step === 2" class="form-step">
+    <div class="form-group">
+      Form Group 2
+    </div>
+    <div class="form-nav">
+        <button type="button" (click)="previousStep()">Back</button>
+        <button type="button" (click)="nextStep()">Next Step</button>
+    </div>
+  </div>
+  <div *ngIf="step === 3" class="form-step">
+    <div class="form-group">
+      Form Group 3
+    </div>
+    <div class="form-nav">
+        <button type="button" (click)="previousStep()">Back</button>
+        <button type="button" (click)="nextStep()">Next Step</button>
+    </div>
+  </div>
+  <div *ngIf="step === 4" class="form-step">
+    <div class="form-group">
+      Form Group 4
+    </div>
+    <div class="form-nav">
+        <button type="button" (click)="previousStep()">Back</button>
+        <button type="button" (click)="nextStep()">Next Step</button>
+    </div>
+  </div>
+</form>
