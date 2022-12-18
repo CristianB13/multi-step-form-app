@@ -73,6 +73,40 @@ form {
       align-items: center;
       justify-content: space-between;
       width: 100%;
+
+      button {
+        border: none;
+        color: $white;
+        background-color: $marine-blue;
+        padding: 0.5rem 1rem;
+        border-radius: 0.3rem;
+
+        &:hover {
+          background-color: lighten($marine-blue, 10);
+          cursor: pointer;
+        }
+
+        &.back {
+          background-color: $white;
+          color: $cool-gray;
+
+          &:hover {
+            color: $marine-blue;
+          }
+        }
+
+        &.confirm {
+          background-color: $purplish-blue;
+
+          &:hover {
+            background-color: lighten($purplish-blue, 10);
+          }
+        }
+
+        &:last-of-type {
+          margin-left: auto;
+        }
+      }
     }
   }
 }

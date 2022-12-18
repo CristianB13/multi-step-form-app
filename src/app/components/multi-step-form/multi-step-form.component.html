@@ -1,24 +1,23 @@
 <div class="steps">
   <div class="step" [class.active]="step === 1">
-    <div class="step-info">Alfa</div>
+    <div class="step-info">Your Info</div>
   </div>
   <div class="step" [class.active]="step === 2">
-    <div class="step-info">Alfa</div>
+    <div class="step-info">Select Plan</div>
   </div>
   <div class="step" [class.active]="step === 3">
-    <div class="step-info">Alfa</div>
+    <div class="step-info">Add-ons</div>
   </div>
   <div class="step" [class.active]="step === 4">
-    <div class="step-info">Alfa</div>
+    <div class="step-info">Summary</div>
   </div>
 </div>
-<form>
+<form (ngOnSubmit)="previousStep()">
   <div *ngIf="step === 1" class="form-step">
     <div class="form-group">
       Form Group 1
     </div>
     <div class="form-nav">
-        <button type="button" (click)="previousStep()">Back</button>
         <button type="button" (click)="nextStep()">Next Step</button>
     </div>
   </div>
@@ -27,7 +26,7 @@
       Form Group 2
     </div>
     <div class="form-nav">
-        <button type="button" (click)="previousStep()">Back</button>
+        <button type="button" class="back" (click)="previousStep()">Go Back</button>
         <button type="button" (click)="nextStep()">Next Step</button>
     </div>
   </div>
@@ -36,7 +35,7 @@
       Form Group 3
     </div>
     <div class="form-nav">
-        <button type="button" (click)="previousStep()">Back</button>
+        <button type="button" class="back" (click)="previousStep()">Go Back</button>
         <button type="button" (click)="nextStep()">Next Step</button>
     </div>
   </div>
@@ -45,8 +44,8 @@
       Form Group 4
     </div>
     <div class="form-nav">
-        <button type="button" (click)="previousStep()">Back</button>
-        <button type="button" (click)="nextStep()">Next Step</button>
+        <button type="button" class="back" (click)="previousStep()">Go Back</button>
+        <button type="button" class="confirm">Confirm</button>
     </div>
   </div>
 </form>
