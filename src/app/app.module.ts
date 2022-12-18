@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MultiStepFormComponent } from './components/multi-step-form/multi-step-form.component';
@@ -10,7 +11,8 @@ import { MultiStepFormComponent } from './components/multi-step-form/multi-step-
     MultiStepFormComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

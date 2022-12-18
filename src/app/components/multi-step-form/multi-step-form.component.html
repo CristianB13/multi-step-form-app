@@ -15,7 +15,10 @@
 <form (ngOnSubmit)="previousStep()">
   <div *ngIf="step === 1" class="form-step">
     <div class="form-group">
-      Form Group 1
+      <div class="header">
+        <h1>Personal Info</h1>
+        <p>Please provide your name, email address and phone number.</p>
+      </div>
     </div>
     <div class="form-nav">
         <button type="button" (click)="nextStep()">Next Step</button>
@@ -23,7 +26,10 @@
   </div>
   <div *ngIf="step === 2" class="form-step">
     <div class="form-group">
-      Form Group 2
+      <div class="header">
+        <h1>Select your plan</h1>
+        <p>You have the option of monthly or yearly billing.</p>
+      </div>
     </div>
     <div class="form-nav">
         <button type="button" class="back" (click)="previousStep()">Go Back</button>
@@ -32,7 +38,10 @@
   </div>
   <div *ngIf="step === 3" class="form-step">
     <div class="form-group">
-      Form Group 3
+      <div class="header">
+        <h1>Pick add-ons</h1>
+        <p>Add-ons help enhance your gaming experience.</p>
+      </div>
     </div>
     <div class="form-nav">
         <button type="button" class="back" (click)="previousStep()">Go Back</button>
@@ -41,7 +50,10 @@
   </div>
   <div *ngIf="step === 4" class="form-step">
     <div class="form-group">
-      Form Group 4
+      <div class="header">
+        <h1>Finishing up</h1>
+        <p>Double check everything looks OK before confirming.</p>
+      </div>
     </div>
     <div class="form-nav">
         <button type="button" class="back" (click)="previousStep()">Go Back</button>

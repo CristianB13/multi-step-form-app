@@ -68,6 +68,13 @@ form {
     justify-content: space-between;
     height: 100%;
 
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      // align-items: center;
+      width: 100%;
+    }
+
     .form-nav {
       display: flex;
       align-items: center;
