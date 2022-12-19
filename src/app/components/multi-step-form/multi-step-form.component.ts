@@ -30,6 +30,18 @@ export class MultiStepFormComponent implements OnInit {
       })
     })
   }
+  
+  get personalInfo(): FormGroup {
+    return this.form.controls['personalInfo'] as FormGroup;
+  }
+
+  get plan(): FormGroup {
+    return this.form.get('plan') as FormGroup;
+  }
+
+  get addOns(): FormGroup {
+    return this.form.get('addOns') as FormGroup;
+  }
 
   nextStep(): void {
     this.step++;
