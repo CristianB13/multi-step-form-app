@@ -3,6 +3,7 @@
 :host {
   display: flex;
   width: 60rem;
+  min-height: 30rem;
   padding: 1rem;
   border-radius: 1rem;
   background-color: $white;
@@ -71,8 +72,22 @@ form {
     .form-group {
       display: flex;
       flex-direction: column;
-      // align-items: center;
       width: 100%;
+      gap: 1.5rem;
+
+      .header {
+        color: $marine-blue;
+
+        p {
+          color: $cool-gray;
+        }
+      }
+
+      .form-group-inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
     }
 
     .form-nav {
@@ -115,5 +130,39 @@ form {
         }
       }
     }
+  }
+}
+
+.form-control {
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    label {
+      color: $marine-blue;
+    }
+
+    .errors {
+      color: $strawberry-red;
+    }
+  }
+  input[type="text"] {
+    padding: 0.6rem;
+    color: $marine-blue;
+    border-radius: 0.5rem;
+    border: 1px solid $light-gray;
+    outline: none;
+  }
+
+  input:focus {
+    border-color: $marine-blue;
+  }
+
+  input.ng-invalid.ng-touched {
+    border-color: $strawberry-red;
   }
 }

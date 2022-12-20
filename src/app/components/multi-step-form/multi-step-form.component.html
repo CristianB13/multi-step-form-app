@@ -19,23 +19,59 @@
         <h1>Personal Info</h1>
         <p>Please provide your name, email address and phone number.</p>
       </div>
-      <div>
+      <div class="form-group-inputs">
         <div class="form-control">
-          <label for="name">Name</label>
-          <input type="text" name="name" id="name" formControlName="name">
+          <div class="header">
+            <label for="name">Name</label>
+            <div
+              *ngIf="
+                personalInfo.get('name')?.invalid &&
+                (personalInfo.get('name')?.touched ||
+                  personalInfo.get('name')?.dirty)
+              "
+              class="errors"
+            ><div *ngIf="personalInfo.get('name')?.errors?.['required']">
+              This field is required
+            </div></div>
+          </div>
+          <input type="text" name="name" id="name" formControlName="name" />
         </div>
         <div class="form-control">
-          <label for="">Email Address</label>
-          <input type="text" name="email" id="email" formControlName="email">
+          <div class="header">
+            <label for="email">Email</label>
+            <div
+              *ngIf="
+                personalInfo.get('email')?.invalid &&
+                (personalInfo.get('email')?.touched ||
+                  personalInfo.get('email')?.dirty)
+              "
+              class="errors"
+            ><div *ngIf="personalInfo.get('email')?.errors?.['required']">
+              This field is required
+            </div></div>
+          </div>
+          <input type="text" name="email" id="email" formControlName="email" />
         </div>
         <div class="form-control">
-          <label for="">Phone Number</label>
-          <input type="text" name="phone" id="phone" formControlName="phone">
+          <div class="header">
+            <label for="phone">Phone Number</label>
+            <div
+              *ngIf="
+                personalInfo.get('phone')?.invalid &&
+                (personalInfo.get('phone')?.touched ||
+                  personalInfo.get('phone')?.dirty)
+              "
+              class="errors"
+            ><div *ngIf="personalInfo.get('phone')?.errors?.['required']">
+              This field is required
+            </div></div>
+          </div>
+          <input type="text" name="phone" id="phone" formControlName="phone" />
         </div>
       </div>
     </div>
     <div class="form-nav">
-        <button type="button" (click)="nextStep()">Next Step</button>
+      <button type="button" (click)="nextStep()">Next Step</button>
     </div>
   </div>
   <div *ngIf="step === 2" class="form-step">
@@ -47,27 +83,29 @@
       <div [formGroup]="plan">
         <div class="form-control">
           <label for="name">Arcade</label>
-          <input type="radio" formControlName="type" value="Arcade">
+          <input type="radio" formControlName="type" value="Arcade" />
         </div>
         <div class="form-control">
           <label for="">Advanced</label>
-          <input type="radio" formControlName="type" value="Advanced">
+          <input type="radio" formControlName="type" value="Advanced" />
         </div>
         <div class="form-control">
           <label for="">Pro</label>
-          <input type="radio" formControlName="type" value="Pro">
+          <input type="radio" formControlName="type" value="Pro" />
         </div>
         <div class="form-control">
           <label for="">Monthly</label>
-          <input type="radio" formControlName="option" value="monthly">
+          <input type="radio" formControlName="option" value="monthly" />
           <label for="">Yearly</label>
-          <input type="radio" formControlName="option" value="yearly">
+          <input type="radio" formControlName="option" value="yearly" />
         </div>
       </div>
     </div>
     <div class="form-nav">
-        <button type="button" class="back" (click)="previousStep()">Go Back</button>
-        <button type="button" (click)="nextStep()">Next Step</button>
+      <button type="button" class="back" (click)="previousStep()">
+        Go Back
+      </button>
+      <button type="button" (click)="nextStep()">Next Step</button>
     </div>
   </div>
   <div *ngIf="step === 3" class="form-step">
@@ -79,21 +117,23 @@
       <div [formGroup]="addOns">
         <div class="form-control">
           <label>Online Service</label>
-          <input type="checkbox" formControlName="onlineService">
+          <input type="checkbox" formControlName="onlineService" />
         </div>
         <div class="form-control">
           <label for="">Storage</label>
-          <input type="checkbox" formControlName="storage">
+          <input type="checkbox" formControlName="storage" />
         </div>
         <div class="form-control">
           <label for="">Customizable Profile</label>
-          <input type="checkbox" formControlName="customizableProfile">
+          <input type="checkbox" formControlName="customizableProfile" />
         </div>
       </div>
     </div>
     <div class="form-nav">
-        <button type="button" class="back" (click)="previousStep()">Go Back</button>
-        <button type="button" (click)="nextStep()">Next Step</button>
+      <button type="button" class="back" (click)="previousStep()">
+        Go Back
+      </button>
+      <button type="button" (click)="nextStep()">Next Step</button>
     </div>
   </div>
   <div *ngIf="step === 4" class="form-step">
@@ -101,19 +141,23 @@
       <div class="header">
         <h1>Finishing up</h1>
         <p>Double check everything looks OK before confirming.</p>
-        <div>Name:{{personalInfo.get('name')?.value}}</div>
-        <div>Email:{{personalInfo.get('email')?.value}}</div>
-        <div>Phone:{{personalInfo.get('phone')?.value}}</div>
-        <div>Plan Type:{{plan.get('type')?.value}}</div>
-        <div>Plan Option:{{plan.get('option')?.value}}</div>
-        <div>OnlineService:{{addOns.get('onlineService')?.value}}</div>
-        <div>Storage:{{addOns.get('storage')?.value}}</div>
-        <div>Customizable Profile:{{addOns.get('customizableProfile')?.value}}</div>
+        <div>Name:{{ personalInfo.get("name")?.value }}</div>
+        <div>Email:{{ personalInfo.get("email")?.value }}</div>
+        <div>Phone:{{ personalInfo.get("phone")?.value }}</div>
+        <div>Plan Type:{{ plan.get("type")?.value }}</div>
+        <div>Plan Option:{{ plan.get("option")?.value }}</div>
+        <div>OnlineService:{{ addOns.get("onlineService")?.value }}</div>
+        <div>Storage:{{ addOns.get("storage")?.value }}</div>
+        <div>
+          Customizable Profile:{{ addOns.get("customizableProfile")?.value }}
+        </div>
       </div>
     </div>
     <div class="form-nav">
-        <button type="button" class="back" (click)="previousStep()">Go Back</button>
-        <button type="button" class="confirm">Confirm</button>
+      <button type="button" class="back" (click)="previousStep()">
+        Go Back
+      </button>
+      <button type="button" class="confirm">Confirm</button>
     </div>
   </div>
 </form>
