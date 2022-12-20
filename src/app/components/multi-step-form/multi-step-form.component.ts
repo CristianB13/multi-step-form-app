@@ -16,12 +16,12 @@ export class MultiStepFormComponent implements OnInit {
     this.form = this.fb.group({
       personalInfo: this.fb.group({
         name: ['', [Validators.required]],
-        email: ['', [Validators.required, Validators.email]],
+        email: ['', [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
         phone: ['', [Validators.required]]
       }),
       plan: this.fb.group({
         type: ['', [Validators.required]],
-        option: ['', [Validators.required]]
+        option: ['monthly', [Validators.required]]
       }),
       addOns: this.fb.group({
         onlineService: [''],

@@ -30,9 +30,11 @@
                   personalInfo.get('name')?.dirty)
               "
               class="errors"
-            ><div *ngIf="personalInfo.get('name')?.errors?.['required']">
-              This field is required
-            </div></div>
+            >
+              <div *ngIf="personalInfo.get('name')?.errors?.['required']">
+                This field is required
+              </div>
+            </div>
           </div>
           <input type="text" name="name" id="name" formControlName="name" />
         </div>
@@ -46,9 +48,14 @@
                   personalInfo.get('email')?.dirty)
               "
               class="errors"
-            ><div *ngIf="personalInfo.get('email')?.errors?.['required']">
-              This field is required
-            </div></div>
+            >
+              <div *ngIf="personalInfo.get('email')?.errors?.['required']">
+                This field is required
+              </div>
+              <div *ngIf="personalInfo.get('email')?.errors?.['pattern']">
+                Not a valid email
+              </div>
+            </div>
           </div>
           <input type="text" name="email" id="email" formControlName="email" />
         </div>
@@ -62,9 +69,11 @@
                   personalInfo.get('phone')?.dirty)
               "
               class="errors"
-            ><div *ngIf="personalInfo.get('phone')?.errors?.['required']">
-              This field is required
-            </div></div>
+            >
+              <div *ngIf="personalInfo.get('phone')?.errors?.['required']">
+                This field is required
+              </div>
+            </div>
           </div>
           <input type="text" name="phone" id="phone" formControlName="phone" />
         </div>
@@ -75,23 +84,53 @@
     </div>
   </div>
   <div *ngIf="step === 2" class="form-step">
-    <div class="form-group">
+    <div class="form-group" [formGroup]="plan">
       <div class="header">
         <h1>Select your plan</h1>
         <p>You have the option of monthly or yearly billing.</p>
       </div>
-      <div [formGroup]="plan">
-        <div class="form-control">
-          <label for="name">Arcade</label>
-          <input type="radio" formControlName="type" value="Arcade" />
-        </div>
-        <div class="form-control">
-          <label for="">Advanced</label>
-          <input type="radio" formControlName="type" value="Advanced" />
-        </div>
-        <div class="form-control">
-          <label for="">Pro</label>
-          <input type="radio" formControlName="type" value="Pro" />
+      <div class="form-group-inputs">
+        <div class="radio-inputs">
+          <div class="form-control">
+            <app-form-radio-button
+              title="Arcade"
+              [info]="
+                plan.get('option')?.value == 'monthly' ? '$9/month' : '$90/year'
+              "
+              [controlGroup]="plan"
+              controlName="type"
+              iconUrl="../../../assets/images/icon-arcade.svg"
+              value="Arcade"
+            ></app-form-radio-button>
+          </div>
+          <div class="form-control">
+            <app-form-radio-button
+              title="Advanced"
+              [info]="
+                plan.get('option')?.value == 'monthly'
+                  ? '$12/month'
+                  : '$120/year'
+              "
+              [controlGroup]="plan"
+              controlName="type"
+              iconUrl="../../../assets/images/icon-advanced.svg"
+              value="Advanced"
+            ></app-form-radio-button>
+          </div>
+          <div class="form-control">
+            <app-form-radio-button
+              title="Pro"
+              [info]="
+                plan.get('option')?.value == 'monthly'
+                  ? '$15/month'
+                  : '$150/year'
+              "
+              [controlGroup]="plan"
+              controlName="type"
+              iconUrl="../../../assets/images/icon-pro.svg"
+              value="Pro"
+            ></app-form-radio-button>
+          </div>
         </div>
         <div class="form-control">
           <label for="">Monthly</label>
