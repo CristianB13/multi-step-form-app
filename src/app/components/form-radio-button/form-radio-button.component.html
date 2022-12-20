@@ -1,0 +1,14 @@
+<label [formGroup]="controlGroup" [class.checked]="controlGroup.get(controlName)?.value == value">
+  <img [src]="iconUrl" />
+  <div class="text">
+    <h1>{{ title }}</h1>
+    <p>{{ info }}</p>
+  </div>
+  <input
+    type="radio"
+    [name]="controlName"
+    [value]="value"
+    [formControlName]="controlName"
+    [checked]="controlGroup.get(controlName)?.value == value"
+  />
+</label>

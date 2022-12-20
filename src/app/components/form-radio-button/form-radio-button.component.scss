@@ -1,0 +1,35 @@
+@import "../../../styles/colors";
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  padding: 1rem;
+  border: 1px solid $light-gray;
+  border-radius: 1rem;
+
+  &:hover {
+    cursor: pointer;
+    border-color: $marine-blue;
+  }
+
+  &.checked {
+    border-color: $marine-blue;
+  }
+
+  h1 {
+    color: $marine-blue;
+  }
+
+  p {
+    color: $cool-gray;
+  }
+
+  input {
+    display: none;
+  }
+
+  img {
+    width: 25%;
+  }
+}
