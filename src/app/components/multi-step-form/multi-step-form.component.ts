@@ -21,7 +21,7 @@ export class MultiStepFormComponent implements OnInit {
       }),
       plan: this.fb.group({
         type: ['', [Validators.required]],
-        monthly: [true, [Validators.required]]
+        yearly: [false, [Validators.required]]
       }),
       addOns: this.fb.group({
         onlineService: [''],

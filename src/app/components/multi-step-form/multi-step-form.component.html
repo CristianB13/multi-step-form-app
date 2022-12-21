@@ -19,7 +19,6 @@
         <h1>Personal Info</h1>
         <p>Please provide your name, email address and phone number.</p>
       </div>
-      <app-form-toggle-button></app-form-toggle-button>
       <div class="form-group-inputs">
         <div class="form-control">
           <div class="header">
@@ -95,9 +94,7 @@
           <div class="form-control">
             <app-form-radio-button
               title="Arcade"
-              [info]="
-                plan.get('monthly')?.value ? '$9/month' : '$90/year'
-              "
+              [info]="!plan.get('yearly')?.value ? '$9/month' : '$90/year'"
               [controlGroup]="plan"
               controlName="type"
               iconUrl="../../../assets/images/icon-arcade.svg"
@@ -107,11 +104,7 @@
           <div class="form-control">
             <app-form-radio-button
               title="Advanced"
-              [info]="
-                plan.get('monthly')?.value
-                  ? '$12/month'
-                  : '$120/year'
-              "
+              [info]="!plan.get('yearly')?.value ? '$12/month' : '$120/year'"
               [controlGroup]="plan"
               controlName="type"
               iconUrl="../../../assets/images/icon-advanced.svg"
@@ -121,11 +114,7 @@
           <div class="form-control">
             <app-form-radio-button
               title="Pro"
-              [info]="
-                plan.get('monthly')?.value
-                  ? '$15/month'
-                  : '$150/year'
-              "
+              [info]="!plan.get('yearly')?.value ? '$15/month' : '$150/year'"
               [controlGroup]="plan"
               controlName="type"
               iconUrl="../../../assets/images/icon-pro.svg"
@@ -134,8 +123,12 @@
           </div>
         </div>
         <div class="form-control">
-          <label for="">Monthly</label>
-          <input type="checkbox" formControlName="monthly"/>
+          <app-form-toggle-button
+            [controlGroup]="plan"
+            controlName="yearly"
+            firstLabel="Monthly"
+            secondLabel="Yearly"
+          ></app-form-toggle-button>
         </div>
       </div>
     </div>
@@ -159,7 +152,7 @@
             controlName="onlineService"
             title="Online Service"
             info="Access to multiplayer games"
-            [price]="plan.get('monthly')?.value ? '+1$/mo' : '+10$/yr'"
+            [price]="!plan.get('yearly')?.value ? '+1$/mo' : '+10$/yr'"
           ></app-form-checkbox-button>
         </div>
         <div class="form-control">
@@ -168,7 +161,7 @@
             controlName="storage"
             title="Larger Storage"
             info="Extra 1TB of cloud save"
-            [price]="plan.get('monthly')?.value ? '+2$/mo' : '+20$/yr'"
+            [price]="!plan.get('yearly')?.value ? '+2$/mo' : '+20$/yr'"
           ></app-form-checkbox-button>
         </div>
         <div class="form-control">
@@ -177,7 +170,7 @@
             controlName="customizableProfile"
             title="Customizable Profile"
             info="Custom theme on your profile"
-            [price]="plan.get('monthly')?.value ? '+2$/mo' : '+20$/yr'"
+            [price]="!plan.get('yearly')?.value ? '+2$/mo' : '+20$/yr'"
           ></app-form-checkbox-button>
         </div>
       </div>
@@ -198,7 +191,7 @@
         <div>Email:{{ personalInfo.get("email")?.value }}</div>
         <div>Phone:{{ personalInfo.get("phone")?.value }}</div>
         <div>Plan Type:{{ plan.get("type")?.value }}</div>
-        <div>Plan Option Monthly:{{ plan.get("monthly")?.value }}</div>
+        <div>Plan Option Yearly:{{ plan.get("yearly")?.value }}</div>
         <div>OnlineService:{{ addOns.get("onlineService")?.value }}</div>
         <div>Storage:{{ addOns.get("storage")?.value }}</div>
         <div>
