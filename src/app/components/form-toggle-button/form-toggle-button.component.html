@@ -1,7 +1,10 @@
 <label>
-  {{firstLabel}}
-  <div class="toggle" [class.active]="control.value">
+  <div class="label" [class.active]="!control.value">
+    {{ firstLabel }}
   </div>
-  {{secondLabel}}
-  <input type="checkbox" [checked]="control.value" [formControl]="control">
+  <div class="toggle" [class.active]="control.value"></div>
+  <div class="label" [class.active]="control.value">
+    {{ secondLabel }}
+  </div>
+  <input type="checkbox" [checked]="control.value" [formControl]="control" />
 </label>

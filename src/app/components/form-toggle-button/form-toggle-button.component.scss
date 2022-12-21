@@ -11,6 +11,19 @@ label {
   padding: 1rem;
   background-color: $magnolia;
   gap: 2rem;
+  border-radius: 0.5rem;
+
+  .label {
+    color: $cool-gray;
+
+    &.active {
+      color: $marine-blue;
+    }
+  }
+
+  input[type="checkbox"] {
+    display: none;
+  }
 
   .toggle {
     height: $toggle-height;
