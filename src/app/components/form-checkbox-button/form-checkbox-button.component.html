@@ -1,0 +1,13 @@
+<label [class.checked]="control.value">
+  <div class="info">
+    <div class="checkbox" [class.checked]="control.value">
+      <img *ngIf="control.value" src="../../../assets/images/icon-checkmark.svg">
+    </div>
+    <div class="title">
+      <h1>{{title}}</h1>
+      <p>{{info}}</p>
+    </div>
+  </div>
+  <div class="price">{{price}}</div>
+  <input type="checkbox" [formControl]="control" [checked]="control.value">
+</label>
