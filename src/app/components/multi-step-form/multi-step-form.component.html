@@ -148,23 +148,38 @@
     </div>
   </div>
   <div *ngIf="step === 3" class="form-step">
-    <div class="form-group">
+    <div class="form-group" [formGroup]="addOns">
       <div class="header">
         <h1>Pick add-ons</h1>
         <p>Add-ons help enhance your gaming experience.</p>
       </div>
-      <div [formGroup]="addOns">
+      <div class="form-group-inputs">
         <div class="form-control">
-          <label>Online Service</label>
-          <input type="checkbox" formControlName="onlineService" />
+          <app-form-checkbox-button
+            [controlGroup]="addOns"
+            controlName="onlineService"
+            title="Online Service"
+            info="Access to multiplayer games"
+            [price]="plan.get('option')?.value == 'monthly' ? '+1$/mo' : '+10$/yr'"
+          ></app-form-checkbox-button>
         </div>
         <div class="form-control">
-          <label for="">Storage</label>
-          <input type="checkbox" formControlName="storage" />
+          <app-form-checkbox-button
+            [controlGroup]="addOns"
+            controlName="storage"
+            title="Larger Storage"
+            info="Extra 1TB of cloud save"
+            [price]="plan.get('option')?.value == 'monthly' ? '+2$/mo' : '+20$/yr'"
+          ></app-form-checkbox-button>
         </div>
         <div class="form-control">
-          <label for="">Customizable Profile</label>
-          <input type="checkbox" formControlName="customizableProfile" />
+          <app-form-checkbox-button
+            [controlGroup]="addOns"
+            controlName="customizableProfile"
+            title="Customizable Profile"
+            info="Custom theme on your profile"
+            [price]="plan.get('option')?.value == 'monthly' ? '+2$/mo' : '+20$/yr'"
+          ></app-form-checkbox-button>
         </div>
       </div>
     </div>
