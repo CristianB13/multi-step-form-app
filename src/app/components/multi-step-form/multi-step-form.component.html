@@ -8,7 +8,7 @@
   <div class="step" [class.active]="step === 3">
     <div class="step-info">Add-ons</div>
   </div>
-  <div class="step" [class.active]="step === 4">
+  <div class="step" [class.active]="step === 4 || step === 5">
     <div class="step-info">Summary</div>
   </div>
 </div>
@@ -94,7 +94,11 @@
           <div class="form-control">
             <app-form-radio-button
               title="Arcade"
-              [info]="!plan.get('yearly')?.value ? '$9/month' : '$90/year'"
+              [info]="
+                !plan.get('yearly')?.value
+                  ? '$' + plans['Arcade'] + '/month'
+                  : '$' + plans['Arcade'] * 10 + '/year'
+              "
               [controlGroup]="plan"
               controlName="type"
               iconUrl="../../../assets/images/icon-arcade.svg"
@@ -104,7 +108,11 @@
           <div class="form-control">
             <app-form-radio-button
               title="Advanced"
-              [info]="!plan.get('yearly')?.value ? '$12/month' : '$120/year'"
+              [info]="
+                !plan.get('yearly')?.value
+                  ? '$' + plans['Advanced'] + '/month'
+                  : '$' + plans['Advanced'] * 10 + '/year'
+              "
               [controlGroup]="plan"
               controlName="type"
               iconUrl="../../../assets/images/icon-advanced.svg"
@@ -114,7 +122,11 @@
           <div class="form-control">
             <app-form-radio-button
               title="Pro"
-              [info]="!plan.get('yearly')?.value ? '$15/month' : '$150/year'"
+              [info]="
+                !plan.get('yearly')?.value
+                  ? '$' + plans['Pro'] + '/month'
+                  : '$' + plans['Pro'] * 10 + '/year'
+              "
               [controlGroup]="plan"
               controlName="type"
               iconUrl="../../../assets/images/icon-pro.svg"
@@ -187,15 +199,59 @@
       <div class="header">
         <h1>Finishing up</h1>
         <p>Double check everything looks OK before confirming.</p>
-        <div>Name:{{ personalInfo.get("name")?.value }}</div>
-        <div>Email:{{ personalInfo.get("email")?.value }}</div>
-        <div>Phone:{{ personalInfo.get("phone")?.value }}</div>
-        <div>Plan Type:{{ plan.get("type")?.value }}</div>
-        <div>Plan Option Yearly:{{ plan.get("yearly")?.value }}</div>
-        <div>OnlineService:{{ addOns.get("onlineService")?.value }}</div>
-        <div>Storage:{{ addOns.get("storage")?.value }}</div>
-        <div>
-          Customizable Profile:{{ addOns.get("customizableProfile")?.value }}
+      </div>
+      <div class="checkups">
+        <div class="checkup">
+          <div class="info">
+            {{ plan.get("type")?.value }} ({{
+              plan.get("yearly")?.value ? "Yearly" : "Monthly"
+            }})
+          </div>
+          <div class="price">
+            ${{
+              plan.get("yearly")?.value
+                ? plans[plan.get("type")?.value] * 10 + "/yr"
+                : plans[plan.get("type")?.value] + "/mo"
+            }}
+          </div>
+        </div>
+        <div *ngIf="addOns.get('onlineService')?.value" class="checkup">
+          <div class="info">Online Service</div>
+          <div class="price">
+            +${{ plan.get("yearly")?.value ? "10/yr" : "1/mo" }}
+          </div>
+        </div>
+        <div *ngIf="addOns.get('storage')?.value" class="checkup">
+          <div class="info">Larger Storage</div>
+          <div class="price">
+            +${{ plan.get("yearly")?.value ? "20/yr" : "2/mo" }}
+          </div>
+        </div>
+        <div *ngIf="addOns.get('customizableProfile')?.value" class="checkup">
+          <div class="info">Customizable Profile</div>
+          <div class="price">
+            +${{ plan.get("yearly")?.value ? "20/yr" : "2/mo" }}
+          </div>
+        </div>
+        <div class="checkup">
+          <div class="info">
+            Total ({{ plan.get("yearly")?.value ? "per year" : "per month" }})
+          </div>
+          <div class="price total">
+            +${{
+              plan.get("yearly")?.value
+                ? (plans[plan.get("type")?.value] +
+                  addOns.get("onlineService")?.value * 1 +
+                  addOns.get("storage")?.value * 2 +
+                  addOns.get("customizableProfile")?.value * 2)*10 + 
+                  '/yr'
+                : (plans[plan.get("type")?.value] +
+                  addOns.get("onlineService")?.value * 1 +
+                  addOns.get("storage")?.value * 2 +
+                  addOns.get("customizableProfile")?.value * 2) + 
+                  '/mo'
+            }}
+          </div>
         </div>
       </div>
     </div>
@@ -203,7 +259,15 @@
       <button type="button" class="back" (click)="previousStep()">
         Go Back
       </button>
-      <button type="button" class="confirm">Confirm</button>
+      <button type="button" class="confirm" (click)="nextStep()">Confirm</button>
     </div>
+  </div>
+  <div *ngIf="step === 5" class="form-step confirm">
+    <img src="../../../assets/images/icon-thank-you.svg">
+    <h1>Thank you!</h1>
+    <p>Thanks for confirming your subscription!
+      We hope you have fun using our platform. If you ever need support,
+      please feel free to email us.
+    </p>
   </div>
 </form>

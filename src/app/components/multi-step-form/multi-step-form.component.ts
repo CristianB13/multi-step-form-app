@@ -9,6 +9,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class MultiStepFormComponent implements OnInit {
   step: number = 1;
   form!: FormGroup;
+  plans: Record<string, number> = {
+    'Arcade': 9, 
+    'Advanced': 12,
+    'Pro': 15
+  }
 
   constructor(private fb: FormBuilder) { }
 
