@@ -80,7 +80,7 @@
       </div>
     </div>
     <div class="form-nav">
-      <button type="button" (click)="nextStep()">Next Step</button>
+      <button type="button" (click)="nextStep()" [disabled]="personalInfo.invalid">Next Step</button>
     </div>
   </div>
   <div *ngIf="step === 2" class="form-step">
@@ -148,7 +148,7 @@
       <button type="button" class="back" (click)="previousStep()">
         Go Back
       </button>
-      <button type="button" (click)="nextStep()">Next Step</button>
+      <button type="button" (click)="nextStep()" [disabled]="plan.invalid">Next Step</button>
     </div>
   </div>
   <div *ngIf="step === 3" class="form-step">
@@ -191,7 +191,7 @@
       <button type="button" class="back" (click)="previousStep()">
         Go Back
       </button>
-      <button type="button" (click)="nextStep()">Next Step</button>
+      <button type="button" (click)="nextStep()" [disabled]="addOns.invalid">Next Step</button>
     </div>
   </div>
   <div *ngIf="step === 4" class="form-step">
